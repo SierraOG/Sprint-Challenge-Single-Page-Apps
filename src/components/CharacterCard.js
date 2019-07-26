@@ -1,17 +1,18 @@
-import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
-
-{/* <div className = "char-card">
-<img src = {char.image} alt = {char.name}/>
-<h2>{char.name}</h2>
-<p>{char.species} {char.status}</p>
-<h3>Location: {char.location.name}</h3>
-<h3>Origin: {char.origin.name}</h3>
-</div> */}
+import React, {useEffect} from 'react'
+import { Card, Image, Dimmer, Loader } from 'semantic-ui-react'
 
 
-export default function CharacterCard ({  char }) {
-  return (
+export default function CharacterCard ({  char, isLoading, setIsLoading }) {
+  useEffect(()=>{
+    setIsLoading(false)
+  }, [char])
+  
+  return (isLoading) ? (
+    <Dimmer inverted active>
+      <Loader inverted > Loading </Loader>
+    </Dimmer>
+  )
+  : (
     <Card>
     <Image src={char.image} wrapped ui={false} />
     <Card.Content>

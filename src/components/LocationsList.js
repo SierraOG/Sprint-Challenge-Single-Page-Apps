@@ -5,6 +5,7 @@ import LocationCard from './LocationCard'
 export default function LocationsList() {
   // TODO: Add useState to track data from useEffect
   const [locList, setLocList] = useState([])
+  const [isLoading, setIsLoading ] = useState(true)
   useEffect(() => {
     // TODO: Add AJAX/API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
@@ -16,7 +17,7 @@ export default function LocationsList() {
   }, [])
 
   return <section className='location-list grid-view'>
-     {locList.map((loc) => <LocationCard loc={loc}/>)}
+     {locList.map((loc) => <LocationCard loc={loc} isLoading={isLoading} setIsLoading={setIsLoading}/>)}
     </section>
 
 }
