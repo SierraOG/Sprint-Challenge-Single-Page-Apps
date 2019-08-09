@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react'
+import React, {useEffect} from 'react'
+
 import { Card, Icon, Dimmer, Loader } from 'semantic-ui-react'
 
-export default function LocationCard ({ loc,isLoading, setIsLoading }) {
-  useEffect(()=>{
-    setIsLoading(false)
-  }, [loc])
+export default function EpisodeCard ({ episode,isLoading, setIsLoading  }) {
+
+    useEffect(()=>{
+     setIsLoading(false)
+    }, [episode])
 
   const description = [
-    loc.type,
+    episode.episode,
     ' - ',
-    loc.dimension,
+    episode.air_date,
   ].join(' ')
   
   return (isLoading) ? (
@@ -19,11 +21,11 @@ export default function LocationCard ({ loc,isLoading, setIsLoading }) {
   )
   : (
     <Card>
-      <Card.Content header={loc.name} />
+      <Card.Content header={episode.name} />
       <Card.Content description={description} />
       <Card.Content extra>
         <Icon name='user' />
-        {loc.residents.length} residents
+        {episode.characters.length} characters
       </Card.Content>
     </Card>
   )
